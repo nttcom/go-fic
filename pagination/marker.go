@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"reflect"
 
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 )
 
 // MarkerPage is a stricter Page interface that describes additional functionality required for use with NewMarkerPager.

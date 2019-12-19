@@ -1,7 +1,7 @@
 package firewalls
 
 import (
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 )
 
 func actionURL(c *fic.ServiceClient, routerID, firewallID, action string) string {

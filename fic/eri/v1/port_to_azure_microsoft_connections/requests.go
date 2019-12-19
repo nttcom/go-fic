@@ -1,7 +1,7 @@
 package port_to_azure_microsoft_connections
 
 import (
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 	"github.com/nttcom/go-fic/pagination"
 )
 

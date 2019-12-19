@@ -7,7 +7,7 @@ import (
 	"net/url"
 	"strings"
 
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 )
 
 // PageResult stores the HTTP response that returned the current page of results.

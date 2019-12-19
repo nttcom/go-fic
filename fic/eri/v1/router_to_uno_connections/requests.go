@@ -1,7 +1,7 @@
 package router_to_uno_connections
 
 import (
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 	"github.com/nttcom/go-fic/pagination"
 )
 

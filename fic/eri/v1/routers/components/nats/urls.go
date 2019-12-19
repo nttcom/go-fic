@@ -1,7 +1,7 @@
 package nats
 
 import (
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 )
 
 func actionURL(c *fic.ServiceClient, routerID, natID, action string) string {

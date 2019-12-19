@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"reflect"
 
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 )
 
 // LinkedPageBase may be embedded to implement a page that provides navigational "Next" and "Previous" links within its result.

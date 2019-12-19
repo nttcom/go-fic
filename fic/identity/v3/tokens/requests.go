@@ -1,6 +1,6 @@
 package tokens
 
-import fic "github.com/nttcom/go-fic"
+import "github.com/nttcom/go-fic"
 
 // Scope allows a created token to be limited to a specific domain or project.
 type Scope struct {

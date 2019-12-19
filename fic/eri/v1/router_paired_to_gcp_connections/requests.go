@@ -1,7 +1,7 @@
 package router_paired_to_gcp_connections
 
 import (
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 	"github.com/nttcom/go-fic/pagination"
 )
 

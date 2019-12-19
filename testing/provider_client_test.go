@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 	th "github.com/nttcom/go-fic/testhelper"
 	"github.com/nttcom/go-fic/testhelper/client"
 )

@@ -1,6 +1,6 @@
 package RESOURCE
 
-import fic "github.com/nttcom/go-fic"
+import "github.com/nttcom/go-fic"
 
 func listURL(client *fic.ServiceClient) string {
 	return client.ServiceURL("resource")
