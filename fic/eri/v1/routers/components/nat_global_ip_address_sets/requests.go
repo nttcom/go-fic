@@ -1,7 +1,7 @@
 package nat_global_ip_address_sets
 
 import (
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 	"github.com/nttcom/go-fic/pagination"
 )
 

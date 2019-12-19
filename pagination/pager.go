@@ -7,7 +7,7 @@ import (
 	"reflect"
 	"strings"
 
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 )
 
 var (

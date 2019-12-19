@@ -1,7 +1,7 @@
 package router_to_ecl_connections
 
 import (
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 )
 
 func resourceURL(c *fic.ServiceClient, id string) string {

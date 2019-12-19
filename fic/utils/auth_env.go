@@ -3,7 +3,7 @@ package utils
 import (
 	"os"
 
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 )
 
 var nilOptions = fic.AuthOptions{}

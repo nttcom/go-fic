@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 	th "github.com/nttcom/go-fic/testhelper"
 )
 

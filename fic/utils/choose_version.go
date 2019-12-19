@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 )
 
 // Version is a supported API version, corresponding to a vN package within the appropriate service.

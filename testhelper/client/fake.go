@@ -1,7 +1,7 @@
 package client
 
 import (
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 	"github.com/nttcom/go-fic/testhelper"
 )
 

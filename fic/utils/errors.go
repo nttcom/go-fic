@@ -3,7 +3,7 @@ package utils
 import (
 	"fmt"
 
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 	tokens3 "github.com/nttcom/go-fic/fic/identity/v3/tokens"
 )
 

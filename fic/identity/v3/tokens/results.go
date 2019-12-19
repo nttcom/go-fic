@@ -3,7 +3,7 @@ package tokens
 import (
 	"time"
 
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 )
 
 // Endpoint represents a single API endpoint offered by a service.

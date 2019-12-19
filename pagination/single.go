@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"reflect"
 
-	fic "github.com/nttcom/go-fic"
+	"github.com/nttcom/go-fic"
 )
 
 // SinglePageBase may be embedded in a Page that contains all of the results from an operation at once.
