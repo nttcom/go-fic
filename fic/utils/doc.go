@@ -11,4 +11,4 @@ Example of Creating a Service Client
 		Region: os.Getenv("OS_REGION_NAME"),
 	})
 */
-package fic
+package utils

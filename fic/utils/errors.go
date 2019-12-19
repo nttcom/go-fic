@@ -1,4 +1,4 @@
-package fic
+package utils
 
 import (
 	"fmt"

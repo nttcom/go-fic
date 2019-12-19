@@ -1,4 +1,4 @@
-package fic
+package utils
 
 import (
 	"fmt"
@@ -7,7 +7,6 @@ import (
 
 	fic "github.com/nttcom/go-fic"
 	tokens3 "github.com/nttcom/go-fic/fic/identity/v3/tokens"
-	"github.com/nttcom/go-fic/fic/utils"
 )
 
 const (
@@ -31,7 +30,7 @@ A basic example of using this would be:
 	client, err := ecl.NewIdentityV3(provider, fic.EndpointOpts{})
 */
 func NewClient(endpoint string) (*fic.ProviderClient, error) {
-	base, err := utils.BaseEndpoint(endpoint)
+	base, err := BaseEndpoint(endpoint)
 	if err != nil {
 		return nil, err
 	}
@@ -83,11 +82,11 @@ func AuthenticatedClient(options fic.AuthOptions) (*fic.ProviderClient, error) {
 // Authenticate or re-authenticate against the most recent identity service
 // supported at the provided endpoint.
 func Authenticate(client *fic.ProviderClient, options fic.AuthOptions) error {
-	versions := []*utils.Version{
+	versions := []*Version{
 		{ID: v3, Priority: 30, Suffix: "/v3/"},
 	}
 
-	chosen, endpoint, err := utils.ChooseVersion(client, versions)
+	chosen, endpoint, err := ChooseVersion(client, versions)
 	if err != nil {
 		return err
 	}
@@ -185,7 +184,7 @@ func NewIdentityV3(client *fic.ProviderClient, eo fic.EndpointOpts) (*fic.Servic
 	// This is because EndpointLocator might have found a versionless
 	// endpoint or the published endpoint is still /v2.0. In both
 	// cases, we need to fix the endpoint to point to /v3.
-	base, err := utils.BaseEndpoint(endpoint)
+	base, err := BaseEndpoint(endpoint)
 	if err != nil {
 		return nil, err
 	}
