@@ -101,7 +101,7 @@ var listResponse = fmt.Sprintf(`
 )
 
 var customApplications = []firewalls.CustomApplication{
-	firewalls.CustomApplication{
+	{
 		Name:            "google-drive-web",
 		Protocol:        "tcp",
 		DestinationPort: "443",
@@ -109,7 +109,7 @@ var customApplications = []firewalls.CustomApplication{
 }
 
 var applicationSets = []firewalls.ApplicationSet{
-	firewalls.ApplicationSet{
+	{
 		Name: "app_set_1",
 		Applications: []string{
 			"google-drive-web",
@@ -119,10 +119,10 @@ var applicationSets = []firewalls.ApplicationSet{
 }
 
 var routingGroupSettings = []firewalls.RoutingGroupSetting{
-	firewalls.RoutingGroupSetting{
+	{
 		GroupName: "group_1",
 		AddressSets: []firewalls.AddressSet{
-			firewalls.AddressSet{
+			{
 				Name: "group1_addset_1",
 				Addresses: []string{
 					"172.18.1.0/24",
@@ -130,10 +130,10 @@ var routingGroupSettings = []firewalls.RoutingGroupSetting{
 			},
 		},
 	},
-	firewalls.RoutingGroupSetting{
+	{
 		GroupName: "group_2",
 		AddressSets: []firewalls.AddressSet{
-			firewalls.AddressSet{
+			{
 				Name: "group2_addset_1",
 				Addresses: []string{
 					"192.168.1.0/24",
@@ -141,22 +141,22 @@ var routingGroupSettings = []firewalls.RoutingGroupSetting{
 			},
 		},
 	},
-	firewalls.RoutingGroupSetting{
+	{
 		GroupName:   "group_3",
 		AddressSets: []firewalls.AddressSet{},
 	},
-	firewalls.RoutingGroupSetting{
+	{
 		GroupName:   "group_4",
 		AddressSets: []firewalls.AddressSet{},
 	},
 }
 
 var rules = []firewalls.Rule{
-	firewalls.Rule{
+	{
 		From: "group_1",
 		To:   "group_2",
 		Entries: []firewalls.Entry{
-			firewalls.Entry{
+			{
 				Name: "rule-01",
 				Match: firewalls.Match{
 					SourceAddressSets: []string{

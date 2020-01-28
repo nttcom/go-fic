@@ -65,22 +65,22 @@ const listResponse = `
 }`
 
 var portType = []switches.PortType{
-	switches.PortType{
+	{
 		Type:      "1G",
 		Available: true,
 	},
-	switches.PortType{
+	{
 		Type:      "10G",
 		Available: false,
 	},
 }
 
 var vlanRanges = []switches.VLANRange{
-	switches.VLANRange{
+	{
 		Range:     "1009-1024",
 		Available: true,
 	},
-	switches.VLANRange{
+	{
 		Range:     "1025-1040",
 		Available: false,
 	},

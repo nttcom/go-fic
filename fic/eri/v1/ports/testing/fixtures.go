@@ -84,11 +84,11 @@ var port1 = ports.Port{
 	Location:   "NW1",
 	Area:       "JPEAST",
 	VLANs: []ports.VLAN{
-		ports.VLAN{
+		{
 			VID:    113,
 			Status: "unused",
 		},
-		ports.VLAN{
+		{
 			VID:    114,
 			Status: "used",
 		},
@@ -110,11 +110,11 @@ var port2 = ports.Port{
 	Location:   "NW2",
 	Area:       "JPWEST",
 	VLANs: []ports.VLAN{
-		ports.VLAN{
+		{
 			VID:    113,
 			Status: "unused",
 		},
-		ports.VLAN{
+		{
 			VID:    114,
 			Status: "used",
 		},
@@ -211,7 +211,7 @@ var port1CreatedWithVLAN = ports.Port{
 	Location:   "NW1",
 	Area:       "JPEAST",
 	VLANs: []ports.VLAN{
-		ports.VLAN{
+		{
 			VID:    32,
 			Status: "unused",
 		},
@@ -269,7 +269,7 @@ var port1CreatedWithVLANRanges = ports.Port{
 	Location:   "NW1",
 	Area:       "JPEAST",
 	VLANs: []ports.VLAN{
-		ports.VLAN{
+		{
 			VID:    32,
 			Status: "unused",
 		},

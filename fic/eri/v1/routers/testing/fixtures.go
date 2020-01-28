@@ -117,28 +117,28 @@ var listResponse = fmt.Sprintf(`
 )
 
 var firewalls = []routers.Firewall{
-	routers.Firewall{
+	{
 		ID:          "F040123456789",
 		IsActivated: false,
 	},
 }
 
 var nats = []routers.NAT{
-	routers.NAT{
+	{
 		ID:          "F050123456789",
 		IsActivated: false,
 	},
 }
 
 var routingGroups = []routers.RoutingGroup{
-	routers.RoutingGroup{Name: "group_1"},
-	routers.RoutingGroup{Name: "group_2"},
-	routers.RoutingGroup{Name: "group_3"},
-	routers.RoutingGroup{Name: "group_4"},
-	routers.RoutingGroup{Name: "group_5"},
-	routers.RoutingGroup{Name: "group_6"},
-	routers.RoutingGroup{Name: "group_7"},
-	routers.RoutingGroup{Name: "group_8"},
+	{Name: "group_1"},
+	{Name: "group_2"},
+	{Name: "group_3"},
+	{Name: "group_4"},
+	{Name: "group_5"},
+	{Name: "group_6"},
+	{Name: "group_7"},
+	{Name: "group_8"},
 }
 
 var router1 = routers.Router{

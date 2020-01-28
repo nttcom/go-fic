@@ -112,12 +112,12 @@ func TestActivateNAT(t *testing.T) {
 		})
 
 	globalIPAddressSets := []nats.GlobalIPAddressSet{
-		nats.GlobalIPAddressSet{
+		{
 			Name:              "src-set-01",
 			Type:              "sourceNapt",
 			NumberOfAddresses: 5,
 		},
-		nats.GlobalIPAddressSet{
+		{
 			Name:              "dst-set-01",
 			Type:              "destinationNat",
 			NumberOfAddresses: 1,
@@ -160,13 +160,13 @@ func TestUpdateNAT(t *testing.T) {
 		})
 
 	sourceNAPTRules := []nats.SourceNAPTRule{
-		nats.SourceNAPTRule{
+		{
 			From: []string{
 				"group_1",
 			},
 			To: "group_2",
 			Entries: []nats.EntryInSourceNAPTRule{
-				nats.EntryInSourceNAPTRule{
+				{
 					Then: []string{
 						"src-set-01",
 						"src-set-02",
@@ -176,13 +176,13 @@ func TestUpdateNAT(t *testing.T) {
 				},
 			},
 		},
-		nats.SourceNAPTRule{
+		{
 			From: []string{
 				"group_2",
 			},
 			To: "group_1",
 			Entries: []nats.EntryInSourceNAPTRule{
-				nats.EntryInSourceNAPTRule{
+				{
 					Then: []string{
 						"src-set-05",
 						"src-set-06",
@@ -195,17 +195,17 @@ func TestUpdateNAT(t *testing.T) {
 	}
 
 	destinationNATRules := []nats.DestinationNATRule{
-		nats.DestinationNATRule{
+		{
 			From: "group_1",
 			To:   "group_2",
 			Entries: []nats.EntryInDestinationNATRule{
-				nats.EntryInDestinationNATRule{
+				{
 					Match: nats.Match{
 						DestinationAddress: "dst-set-01",
 					},
 					Then: "192.168.0.1/32",
 				},
-				nats.EntryInDestinationNATRule{
+				{
 					Match: nats.Match{
 						DestinationAddress: "dst-set-02",
 					},
@@ -213,17 +213,17 @@ func TestUpdateNAT(t *testing.T) {
 				},
 			},
 		},
-		nats.DestinationNATRule{
+		{
 			From: "group_2",
 			To:   "group_1",
 			Entries: []nats.EntryInDestinationNATRule{
-				nats.EntryInDestinationNATRule{
+				{
 					Match: nats.Match{
 						DestinationAddress: "dst-set-03",
 					},
 					Then: "192.168.0.3/32",
 				},
-				nats.EntryInDestinationNATRule{
+				{
 					Match: nats.Match{
 						DestinationAddress: "dst-set-04",
 					},
