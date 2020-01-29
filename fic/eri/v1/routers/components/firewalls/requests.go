@@ -142,8 +142,8 @@ type RoutingGroupSetting struct {
 // UpdateOpts represents options used to activate a firewall.
 type UpdateOpts struct {
 	Rules                []Rule                `json:"rules,omitempty"`
-	CustomApplications   []CustomApplication   `json:"customApplications,omitemtpry"`
-	ApplicationSets      []ApplicationSet      `json:"applicationSets,omitemtpry"`
+	CustomApplications   []CustomApplication   `json:"customApplications,omitempty"`
+	ApplicationSets      []ApplicationSet      `json:"applicationSets,omitempty"`
 	RoutingGroupSettings []RoutingGroupSetting `json:"routingGroupSettings,omitempty"`
 }
 

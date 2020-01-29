@@ -191,7 +191,7 @@ var connectionCreatedWithVLANRanges = ports.Port{
 	Location:   "NW1",
 	Area:       "JPEAST",
 	VLANs: []ports.VLAN{
-		ports.VLAN{
+		{
 			VID:    32,
 			Status: "unused",
 		},

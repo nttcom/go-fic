@@ -112,13 +112,13 @@ var nat1 = nats.NAT{
 	TenantID:        "080f290761484afabbec22938adc6a2e",
 	OperationStatus: "Processing",
 	SourceNAPTRules: []nats.SourceNAPTRule{
-		nats.SourceNAPTRule{
+		{
 			From: []string{
 				"group_1",
 			},
 			To: "group_2",
 			Entries: []nats.EntryInSourceNAPTRule{
-				nats.EntryInSourceNAPTRule{
+				{
 					Then: []string{
 						"src-set-01",
 						"src-set-02",
@@ -130,17 +130,17 @@ var nat1 = nats.NAT{
 		},
 	},
 	DestinationNATRules: []nats.DestinationNATRule{
-		nats.DestinationNATRule{
+		{
 			From: "group_1",
 			To:   "group_2",
 			Entries: []nats.EntryInDestinationNATRule{
-				nats.EntryInDestinationNATRule{
+				{
 					Match: nats.Match{
 						DestinationAddress: "dst-set-01",
 					},
 					Then: "192.168.0.1/32",
 				},
-				nats.EntryInDestinationNATRule{
+				{
 					Match: nats.Match{
 						DestinationAddress: "dst-set-02",
 					},
@@ -344,7 +344,7 @@ var natActivated = nats.NAT{
 		"192.168.0.12/30",
 	},
 	GlobalIPAddressSets: []nats.GlobalIpAddressSets{
-		nats.GlobalIpAddressSets{
+		{
 			ID:                "4033447dc8c548e3afb5432f7deaf0cf",
 			Name:              "src-set-01",
 			Type:              "sourceNapt",
@@ -360,7 +360,7 @@ var natActivated = nats.NAT{
 				"100.131.66.83",
 			},
 		},
-		nats.GlobalIpAddressSets{
+		{
 			ID:                "2754efba42f84ae99095b4cdd654896a",
 			Name:              "dst-set-01",
 			Type:              "destinationNat",
@@ -555,13 +555,13 @@ var natUpdated = nats.NAT{
 	IsActivated:     true,
 	OperationStatus: "Processing",
 	SourceNAPTRules: []nats.SourceNAPTRule{
-		nats.SourceNAPTRule{
+		{
 			From: []string{
 				"group_1",
 			},
 			To: "group_2",
 			Entries: []nats.EntryInSourceNAPTRule{
-				nats.EntryInSourceNAPTRule{
+				{
 					Then: []string{
 						"src-set-01",
 						"src-set-02",
@@ -571,13 +571,13 @@ var natUpdated = nats.NAT{
 				},
 			},
 		},
-		nats.SourceNAPTRule{
+		{
 			From: []string{
 				"group_2",
 			},
 			To: "group_1",
 			Entries: []nats.EntryInSourceNAPTRule{
-				nats.EntryInSourceNAPTRule{
+				{
 					Then: []string{
 						"src-set-05",
 						"src-set-06",
@@ -589,17 +589,17 @@ var natUpdated = nats.NAT{
 		},
 	},
 	DestinationNATRules: []nats.DestinationNATRule{
-		nats.DestinationNATRule{
+		{
 			From: "group_1",
 			To:   "group_2",
 			Entries: []nats.EntryInDestinationNATRule{
-				nats.EntryInDestinationNATRule{
+				{
 					Match: nats.Match{
 						DestinationAddress: "dst-set-01",
 					},
 					Then: "192.168.0.1/32",
 				},
-				nats.EntryInDestinationNATRule{
+				{
 					Match: nats.Match{
 						DestinationAddress: "dst-set-02",
 					},
@@ -607,17 +607,17 @@ var natUpdated = nats.NAT{
 				},
 			},
 		},
-		nats.DestinationNATRule{
+		{
 			From: "group_2",
 			To:   "group_1",
 			Entries: []nats.EntryInDestinationNATRule{
-				nats.EntryInDestinationNATRule{
+				{
 					Match: nats.Match{
 						DestinationAddress: "dst-set-03",
 					},
 					Then: "192.168.0.3/32",
 				},
-				nats.EntryInDestinationNATRule{
+				{
 					Match: nats.Match{
 						DestinationAddress: "dst-set-04",
 					},
