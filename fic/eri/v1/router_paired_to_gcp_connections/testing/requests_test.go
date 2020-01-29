@@ -161,7 +161,7 @@ func TestUpdateConnection(t *testing.T) {
 	url := fmt.Sprintf("/router-to-gcp-connections/%s", idConnection1)
 	th.Mux.HandleFunc(url,
 		func(w http.ResponseWriter, r *http.Request) {
-			th.TestMethod(t, r, "PUT")
+			th.TestMethod(t, r, "PATCH")
 			th.TestHeader(t, r, "X-Auth-Token", TokenID)
 			th.TestHeader(t, r, "Content-Type", "application/json")
 			th.TestHeader(t, r, "Accept", "application/json")
