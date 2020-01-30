@@ -157,7 +157,7 @@ func Update(c *fic.ServiceClient, connectionID string, opts UpdateOptsBuilder) (
 		r.Err = err
 		return
 	}
-	_, r.Err = c.Put(updateURL(c, connectionID), b, &r.Body, &fic.RequestOpts{
+	_, r.Err = c.Patch(updateURL(c, connectionID), b, &r.Body, &fic.RequestOpts{
 		OkCodes: []int{202},
 	})
 	return
