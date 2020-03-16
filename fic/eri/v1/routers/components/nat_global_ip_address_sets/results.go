@@ -36,7 +36,7 @@ type GetResult struct {
 
 // DeleteResult represents the result of a delete operation.
 type DeleteResult struct {
-	commonResult
+	fic.ErrResult
 }
 
 // GlobalIPAddressSet represents global ip address set resource.
