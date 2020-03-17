@@ -4,8 +4,6 @@ FIC Global IP Address Set in Component-NAT resources.
 
 Example to List Global IP Address Sets
 
-	listOpts := nat_global_ip_address_sets.ListOpts{}
-
 	idRouter := "router1-id"
 	idNAT := "nat1-id"
 	allPages, err := nat_global_ip_address_sets.List(client, idRouter, idNAT, nil).AllPages()
