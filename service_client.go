@@ -110,6 +110,14 @@ func (client *ServiceClient) Delete(url string, opts *RequestOpts) (*http.Respon
 	return client.Request("DELETE", url, opts)
 }
 
+func (client *ServiceClient) DeleteWithJSONResponse(url string, JSONResponse interface{}, opts *RequestOpts) (*http.Response, error) {
+	if opts == nil {
+		opts = new(RequestOpts)
+	}
+	client.initReqOpts(url, nil, JSONResponse, opts)
+	return client.Request("DELETE", url, opts)
+}
+
 // Head calls `Request` with the "HEAD" HTTP verb.
 func (client *ServiceClient) Head(url string, opts *RequestOpts) (*http.Response, error) {
 	if opts == nil {

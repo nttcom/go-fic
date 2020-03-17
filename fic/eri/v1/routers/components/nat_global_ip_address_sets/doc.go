@@ -8,7 +8,7 @@ Example to List Global IP Address Sets
 
 	idRouter := "router1-id"
 	idNAT := "nat1-id"
-	allPages, err := nat_global_ip_address_sets.List(fakeclient.ServiceClient(), idRouter, idNAT, nil).AllPages()
+	allPages, err := nat_global_ip_address_sets.List(client, idRouter, idNAT, nil).AllPages()
 	if err != nil {
 		panic(err)
 	}
@@ -29,10 +29,12 @@ Example to Get Global IP Address Set
 	idNAT := "nat1-id"
 	idGIP := "gip1-id"
 
-	ip, err := nat_global_ip_address_sets.Get(fakeclient.ServiceClient(), idRouter, idNAT, idGIP).Extract()
+	gip, err := nat_global_ip_address_sets.Get(client, idRouter, idNAT, idGIP).Extract()
 	if err != nil {
 		panic(err)
 	}
+
+	fmt.Printf("%+v", gip)
 
 
 Example to Create a Global IP Address Set
@@ -45,10 +47,12 @@ Example to Create a Global IP Address Set
 		Type:              "sourceNapt",
 		NumberOfAddresses: 5,
 	}
-	p, err := nat_global_ip_address_sets.Create(fakeclient.ServiceClient(), idRouter, idNAT, createOpts).Extract()
+	gip, err := nat_global_ip_address_sets.Create(client, idRouter, idNAT, createOpts).Extract()
 	if err != nil {
 		panic(err)
 	}
+
+	fmt.Printf("%+v", gip)
 
 
 Example to Delete a Global IP Address Set
@@ -57,10 +61,12 @@ Example to Delete a Global IP Address Set
 	idNAT := "nat1-id"
 	idGIP := "gip1-id"
 
-	n, err := nat_global_ip_address_sets.Delete(client, idRouter, idNAT, idGIP)
+	gip, err := nat_global_ip_address_sets.Delete(client, idRouter, idNAT, idGIP).Extract()
 	if err != nil {
 		panic(err)
 	}
+
+	fmt.Printf("%+v", gip)
 
 */
 package nat_global_ip_address_sets

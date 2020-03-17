@@ -132,7 +132,9 @@ func TestDeleteGlobalIPAddressSet(t *testing.T) {
 	th.Mux.HandleFunc(url, func(w http.ResponseWriter, r *http.Request) {
 		th.TestMethod(t, r, "DELETE")
 		th.TestHeader(t, r, "X-Auth-Token", TokenID)
+		w.Header().Add("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
+		fmt.Fprintf(w, DeleteResponse)
 	})
 
 	res := nat_global_ip_address_sets.Delete(fakeclient.ServiceClient(), idRouter, idNAT, idGIP1)

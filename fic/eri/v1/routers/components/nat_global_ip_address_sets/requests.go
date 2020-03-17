@@ -81,6 +81,8 @@ func Create(c *fic.ServiceClient, routerID, natID string, opts CreateOptsBuilder
 
 // Delete accepts a unique ID and deletes the global ip address set associated with it.
 func Delete(c *fic.ServiceClient, routerID, natID, globalIPAddressSetID string) (r DeleteResult) {
-	_, r.Err = c.Delete(deleteURL(c, routerID, natID, globalIPAddressSetID), &fic.RequestOpts{OkCodes: []int{200}})
+	_, r.Err = c.DeleteWithJSONResponse(deleteURL(c, routerID, natID, globalIPAddressSetID), &r.Body, &fic.RequestOpts{
+		OkCodes: []int{200},
+	})
 	return
 }
