@@ -74,7 +74,7 @@ func Create(c *fic.ServiceClient, routerID, natID string, opts CreateOptsBuilder
 		return
 	}
 	_, r.Err = c.Post(createURL(c, routerID, natID), b, &r.Body, &fic.RequestOpts{
-		OkCodes: []int{200, 202},
+		OkCodes: []int{200},
 	})
 	return
 }
