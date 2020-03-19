@@ -156,3 +156,15 @@ var gip1Created = nat_global_ip_address_sets.GlobalIPAddressSet{
 	},
 	OperationID: "b70562414a5242d8ab556afae976ca47",
 }
+
+var DeleteResponse = fmt.Sprintf(`
+{
+    "globalIpAddressSet": {
+        "id": "%s",
+        "operationId": "76a2e7331a974e4597c5404899c2e6a6",
+        "operationStatus": "Completed"
+    }
+}
+`,
+	idGIP1,
+)

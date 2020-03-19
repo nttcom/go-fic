@@ -95,7 +95,7 @@ func TestGetGlobalIPAddressSet(t *testing.T) {
 	th.CheckDeepEquals(t, &gip1, ip)
 }
 
-func TestCreateGLobalIPAddressSet(t *testing.T) {
+func TestCreateGlobalIPAddressSet(t *testing.T) {
 	th.SetupHTTP()
 	defer th.TeardownHTTP()
 
@@ -124,7 +124,7 @@ func TestCreateGLobalIPAddressSet(t *testing.T) {
 	th.AssertDeepEquals(t, &gip1Created, p)
 }
 
-func TestDeletePort(t *testing.T) {
+func TestDeleteGlobalIPAddressSet(t *testing.T) {
 	th.SetupHTTP()
 	defer th.TeardownHTTP()
 
@@ -132,7 +132,9 @@ func TestDeletePort(t *testing.T) {
 	th.Mux.HandleFunc(url, func(w http.ResponseWriter, r *http.Request) {
 		th.TestMethod(t, r, "DELETE")
 		th.TestHeader(t, r, "X-Auth-Token", TokenID)
-		w.WriteHeader(http.StatusNoContent)
+		w.Header().Add("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprintf(w, DeleteResponse)
 	})
 
 	res := nat_global_ip_address_sets.Delete(fakeclient.ServiceClient(), idRouter, idNAT, idGIP1)
