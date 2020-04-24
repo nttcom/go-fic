@@ -124,6 +124,9 @@ func TestCreateConnection(t *testing.T) {
 					In:  &four,
 					Out: &four,
 				},
+				MED: con.MED{
+					Out: 10,
+				},
 			},
 			// Secondary: con.SourceHAInfo{
 			// 	IPAddress: "10.0.0.5/30",
@@ -201,6 +204,9 @@ func TestUpdateConnection(t *testing.T) {
 				ASPathPrepend: con.ASPathPrepend{
 					In:  &null,
 					Out: &two,
+				},
+				MED: con.MED{
+					Out: 30,
 				},
 			},
 			// Secondary: con.SourceHAInfoForUpdate{

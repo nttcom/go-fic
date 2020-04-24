@@ -36,6 +36,9 @@ var listResponse = fmt.Sprintf(`
                     "asPathPrepend": {
                         "in": 1,
                         "out": null
+                    },
+                    "med": {
+                        "out": 10
                     }
                 },
                 "secondary": {}
@@ -76,6 +79,9 @@ var connection1 = con.Connection{
 			ASPathPrepend: con.ASPathPrepend{
 				In:  &one,
 				Out: &null,
+			},
+			MED: con.MED{
+				Out: 10,
 			},
 		},
 		// Secondary: con.SourceHAInfo{
@@ -128,6 +134,9 @@ var getResponse = fmt.Sprintf(`
                 "asPathPrepend": {
                     "in": 1,
                     "out": null
+                },
+                "med": {
+                    "out": 10
                 }
             },
             "secondary": {
@@ -135,6 +144,9 @@ var getResponse = fmt.Sprintf(`
                 "asPathPrepend": {
                     "in": 5,
                     "out": 4
+                },
+                "med": {
+                    "out": 10
                 }
             }
         },
@@ -171,6 +183,9 @@ const createRequest = `
                 "asPathPrepend": {
                     "in": 4,
                     "out": 4
+                },
+                "med": {
+                    "out": 10
                 }
             },
             "routeFilter": {
@@ -212,6 +227,9 @@ var createResponse = fmt.Sprintf(`
                 "asPathPrepend": {
                     "in": 4,
                     "out": 4
+                },
+                "med": {
+                    "out": 10
                 }
             },
             "secondary": {}
@@ -248,6 +266,9 @@ var connectionCreated = con.Connection{
 			ASPathPrepend: con.ASPathPrepend{
 				In:  &four,
 				Out: &four,
+			},
+			MED: con.MED{
+				Out: 10,
 			},
 		},
 		// Secondary: con.SourceHAInfo{
@@ -288,6 +309,9 @@ const updateRequest = `
                 "asPathPrepend": {
                     "in": null,
                     "out": 2
+                },
+                "med": {
+                    "out": 30
                 }
             },
             "routeFilter": {
@@ -320,6 +344,9 @@ var updateResponse = fmt.Sprintf(`
                 "asPathPrepend": {
                     "in": null,
                     "out": 2
+                },
+                "med": {
+                    "out": 30
                 }
             },
             "secondary": {}
@@ -356,6 +383,9 @@ var connectionUpdated = con.Connection{
 			ASPathPrepend: con.ASPathPrepend{
 				In:  &null,
 				Out: &two,
+			},
+			MED: con.MED{
+				Out: 30,
 			},
 		},
 		// Secondary: con.SourceHAInfo{
