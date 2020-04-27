@@ -69,7 +69,7 @@ type MED struct {
 type SourceHAInfo struct {
 	IPAddress     string        `json:"ipAddress" required:"true"`
 	ASPathPrepend ASPathPrepend `json:"asPathPrepend,omitempty"`
-	MED           MED           `json:"med,omitempty"`
+	MED           *MED          `json:"med,omitempty"`
 }
 
 // RouteFilter represents RouteFilter parameters
@@ -148,7 +148,7 @@ type UpdateOptsBuilder interface {
 // in case of Updating.
 type SourceHAInfoForUpdate struct {
 	ASPathPrepend ASPathPrepend `json:"asPathPrepend,omitempty"`
-	MED           MED           `json:"med,omitempty"`
+	MED           *MED          `json:"med,omitempty"`
 }
 
 // SourceForUpdate represents Source parameter in case of Updating.

@@ -80,7 +80,7 @@ var connection1 = con.Connection{
 				In:  &one,
 				Out: &null,
 			},
-			MED: con.MED{
+			MED: &con.MED{
 				Out: 10,
 			},
 		},
@@ -267,7 +267,7 @@ var connectionCreated = con.Connection{
 				In:  &four,
 				Out: &four,
 			},
-			MED: con.MED{
+			MED: &con.MED{
 				Out: 10,
 			},
 		},
@@ -384,7 +384,7 @@ var connectionUpdated = con.Connection{
 				In:  &null,
 				Out: &two,
 			},
-			MED: con.MED{
+			MED: &con.MED{
 				Out: 30,
 			},
 		},

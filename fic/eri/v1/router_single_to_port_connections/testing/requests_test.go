@@ -124,7 +124,7 @@ func TestCreateConnection(t *testing.T) {
 					In:  &four,
 					Out: &four,
 				},
-				MED: con.MED{
+				MED: &con.MED{
 					Out: 10,
 				},
 			},
@@ -205,7 +205,7 @@ func TestUpdateConnection(t *testing.T) {
 					In:  &null,
 					Out: &two,
 				},
-				MED: con.MED{
+				MED: &con.MED{
 					Out: 30,
 				},
 			},
