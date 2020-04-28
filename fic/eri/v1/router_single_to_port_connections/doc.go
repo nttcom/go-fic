@@ -47,12 +47,8 @@ Example to Create a Connection
 					In:  &four,
 					Out: &four,
 				},
-			},
-			Secondary: con.SourceHAInfo{
-				IPAddress: "10.0.0.5/30",
-				ASPathPrepend: con.ASPathPrepend{
-					In:  &two,
-					Out: &one,
+				MED: &con.MED{
+					Out: 10,
 				},
 			},
 			RouteFilter: con.RouteFilter{
@@ -65,12 +61,6 @@ Example to Create a Connection
 				PortID:    "F010123456789",
 				VLAN:      101,
 				IPAddress: "10.0.0.2/30",
-				ASN:       "65000",
-			},
-			Secondary: con.DestinationHAInfo{
-				PortID:    "F019876543210",
-				VLAN:      102,
-				IPAddress: "10.0.0.6/30",
 				ASN:       "65000",
 			},
 		},
@@ -102,11 +92,8 @@ Example to Update a Connection
 					In:  &null,
 					Out: &two,
 				},
-			},
-			Secondary: con.SourceHAInfoForUpdate{
-				ASPathPrepend: con.ASPathPrepend{
-					In:  &null,
-					Out: &two,
+				MED: &con.MED{
+					Out: 30,
 				},
 			},
 			RouteFilter: con.RouteFilter{

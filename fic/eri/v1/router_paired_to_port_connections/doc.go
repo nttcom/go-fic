@@ -47,12 +47,18 @@ Example to Create a Connection
 					In:  &four,
 					Out: &four,
 				},
+				MED: &con.MED{
+					Out: 10,
+				},
 			},
 			Secondary: con.SourceHAInfo{
 				IPAddress: "10.0.0.5/30",
 				ASPathPrepend: con.ASPathPrepend{
 					In:  &two,
 					Out: &one,
+				},
+				MED: &con.MED{
+					Out: 20,
 				},
 			},
 			RouteFilter: con.RouteFilter{
@@ -102,11 +108,17 @@ Example to Update a Connection
 					In:  &null,
 					Out: &two,
 				},
+				MED: &con.MED{
+					Out: 30,
+				},
 			},
 			Secondary: con.SourceHAInfoForUpdate{
 				ASPathPrepend: con.ASPathPrepend{
 					In:  &null,
 					Out: &two,
+				},
+				MED: &con.MED{
+					Out: 40,
 				},
 			},
 			RouteFilter: con.RouteFilter{
