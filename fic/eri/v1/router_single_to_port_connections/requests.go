@@ -59,11 +59,17 @@ type ASPathPrepend struct {
 	Out *interface{} `json:"out" required:"true"`
 }
 
+// MED represents MED value
+type MED struct {
+	Out int `json:"out"`
+}
+
 // SourceHAInfo represents Primary/Secondary parameters
 // for Source of Connection.
 type SourceHAInfo struct {
 	IPAddress     string        `json:"ipAddress" required:"true"`
 	ASPathPrepend ASPathPrepend `json:"asPathPrepend,omitempty"`
+	MED           *MED          `json:"med,omitempty"`
 }
 
 // RouteFilter represents RouteFilter parameters
@@ -142,6 +148,7 @@ type UpdateOptsBuilder interface {
 // in case of Updating.
 type SourceHAInfoForUpdate struct {
 	ASPathPrepend ASPathPrepend `json:"asPathPrepend,omitempty"`
+	MED           *MED          `json:"med,omitempty"`
 }
 
 // SourceForUpdate represents Source parameter in case of Updating.

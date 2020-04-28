@@ -36,6 +36,9 @@ var listResponse = fmt.Sprintf(`
                     "asPathPrepend": {
                         "in": 1,
                         "out": null
+                    },
+                    "med": {
+                        "out": 10
                     }
                 },
                 "secondary": {
@@ -43,6 +46,9 @@ var listResponse = fmt.Sprintf(`
                     "asPathPrepend": {
                         "in": 5,
                         "out": 4
+                    },
+                    "med": {
+                        "out": 20
                     }
                 }
             },
@@ -88,12 +94,18 @@ var connection1 = con.Connection{
 				In:  &one,
 				Out: &null,
 			},
+			MED: &con.MED{
+				Out: 10,
+			},
 		},
 		Secondary: con.SourceHAInfo{
 			IPAddress: "10.30.0.1/30",
 			ASPathPrepend: con.ASPathPrepend{
 				In:  &five,
 				Out: &four,
+			},
+			MED: &con.MED{
+				Out: 20,
 			},
 		},
 	},
@@ -139,6 +151,9 @@ var getResponse = fmt.Sprintf(`
                 "asPathPrepend": {
                     "in": 1,
                     "out": null
+                },
+                "med": {
+                    "out": 10
                 }
             },
             "secondary": {
@@ -146,6 +161,9 @@ var getResponse = fmt.Sprintf(`
                 "asPathPrepend": {
                     "in": 5,
                     "out": 4
+                },
+                "med": {
+                    "out": 20
                 }
             }
         },
@@ -182,6 +200,9 @@ const createRequest = `
                 "asPathPrepend": {
                     "in": 4,
                     "out": 4
+                },
+                "med": {
+                    "out": 10
                 }
             },
             "secondary": {
@@ -189,6 +210,9 @@ const createRequest = `
                 "asPathPrepend": {
                     "in": 2,
                     "out": 1
+                },
+                "med": {
+                    "out": 20
                 }
             },
             "routeFilter": {
@@ -236,6 +260,9 @@ var createResponse = fmt.Sprintf(`
                 "asPathPrepend": {
                     "in": 4,
                     "out": 4
+                },
+                "med": {
+                    "out": 10
                 }
             },
             "secondary": {
@@ -243,6 +270,9 @@ var createResponse = fmt.Sprintf(`
                 "asPathPrepend": {
                     "in": 2,
                     "out": 1
+                },
+                "med": {
+                    "out": 20
                 }
             }
         },
@@ -284,12 +314,18 @@ var connectionCreated = con.Connection{
 				In:  &four,
 				Out: &four,
 			},
+			MED: &con.MED{
+				Out: 10,
+			},
 		},
 		Secondary: con.SourceHAInfo{
 			IPAddress: "10.0.0.5/30",
 			ASPathPrepend: con.ASPathPrepend{
 				In:  &two,
 				Out: &one,
+			},
+			MED: &con.MED{
+				Out: 20,
 			},
 		},
 		RouteFilter: con.RouteFilter{
@@ -323,12 +359,18 @@ const updateRequest = `
                 "asPathPrepend": {
                     "in": null,
                     "out": 2
+                },
+                "med": {
+                    "out": 30
                 }
             },
             "secondary": {
                 "asPathPrepend": {
                     "in": null,
                     "out": 2
+                },
+                "med": {
+                    "out": 40
                 }
             },
             "routeFilter": {
@@ -361,6 +403,9 @@ var updateResponse = fmt.Sprintf(`
                 "asPathPrepend": {
                     "in": null,
                     "out": 2
+                },
+                "med": {
+                    "out": 30
                 }
             },
             "secondary": {
@@ -368,6 +413,9 @@ var updateResponse = fmt.Sprintf(`
                 "asPathPrepend": {
                     "in": null,
                     "out": 2
+                },
+                "med": {
+                    "out": 40
                 }
             }
         },
@@ -409,12 +457,18 @@ var connectionUpdated = con.Connection{
 				In:  &null,
 				Out: &two,
 			},
+			MED: &con.MED{
+				Out: 30,
+			},
 		},
 		Secondary: con.SourceHAInfo{
 			IPAddress: "10.0.0.5/30",
 			ASPathPrepend: con.ASPathPrepend{
 				In:  &null,
 				Out: &two,
+			},
+			MED: &con.MED{
+				Out: 40,
 			},
 		},
 		RouteFilter: con.RouteFilter{
