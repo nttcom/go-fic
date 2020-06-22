@@ -225,6 +225,6 @@ func NewEriV1(client *fic.ProviderClient, eo fic.EndpointOpts) (*fic.ServiceClie
 	if os.Getenv("STATIC_FIC_ERI_ENDPOINT") != "" {
 		c.Endpoint = os.Getenv("STATIC_FIC_ERI_ENDPOINT")
 	}
-	c.Endpoint += "fic-eri/v1/"
+	c.Endpoint += "v1/"
 	return c, err
 }
