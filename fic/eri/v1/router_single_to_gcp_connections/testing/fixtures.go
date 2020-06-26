@@ -9,7 +9,6 @@ import (
 const idConnection1 = "F010123456789"
 
 var one = interface{}(1)
-var two = interface{}(2)
 var null = interface{}(nil)
 
 var listResponse = fmt.Sprintf(`
@@ -17,10 +16,11 @@ var listResponse = fmt.Sprintf(`
     "connections": [
         {
             "id": "%s",
-            "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
-            "operationStatus": "Completed",
-            "redundant": false,
             "name": "YourConnectionName",
+            "redundant": false,
+            "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
+            "area": "JPEAST",
+            "operationStatus": "Completed",
             "bandwidth": "300M",
             "source": {
                 "routerId": "F020123456789",
@@ -31,14 +31,14 @@ var listResponse = fmt.Sprintf(`
                 },
                 "primary": {
                     "asPathPrepend": {
-                        "in": 1,
+                        "in": null,
                         "out": null
                     }
                 }
             },
             "destination": {
                 "primary": {
-                    "interconnect": "Equinix-TY2-1",
+                    "interconnect": "Equinix-TY2-2",
                     "pairingKey": "4f043662-2ed6-45b0-8c3a-77d685716e28/asia-northeast1/2"
                 },
                 "qosType": "guarantee"
@@ -54,6 +54,7 @@ var listResponse = fmt.Sprintf(`
 var connection1 = con.Connection{
 	ID:              idConnection1,
 	TenantID:        "87e89b8f075a4ee1aa209f6ca6ce242c",
+	Area:            "JPEAST",
 	OperationStatus: "Completed",
 	Redundant:       false,
 	Name:            "YourConnectionName",
@@ -67,14 +68,14 @@ var connection1 = con.Connection{
 		},
 		Primary: con.Primary{
 			ASPathPrepend: con.ASPathPrepend{
-				In:  &one,
+				In:  &null,
 				Out: &null,
 			},
 		},
 	},
 	Destination: con.Destination{
 		Primary: con.DestinationHAInfo{
-			Interconnect: "Equinix-TY2-1",
+			Interconnect: "Equinix-TY2-2",
 			PairingKey:   "4f043662-2ed6-45b0-8c3a-77d685716e28/asia-northeast1/2",
 		},
 		QosType: "guarantee",
@@ -90,10 +91,11 @@ var getResponse = fmt.Sprintf(`
 {
     "connection": {
         "id": "%s",
-        "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
-        "operationStatus": "Completed",
-        "redundant": false,
         "name": "YourConnectionName",
+        "redundant": false,
+        "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
+        "area": "JPEAST",
+        "operationStatus": "Completed",
         "bandwidth": "300M",
         "source": {
             "routerId": "F020123456789",
@@ -104,14 +106,14 @@ var getResponse = fmt.Sprintf(`
             },
             "primary": {
                 "asPathPrepend": {
-                    "in": 1,
+                    "in": null,
                     "out": null
                 }
             }
         },
         "destination": {
             "primary": {
-                "interconnect": "Equinix-TY2-1",
+                "interconnect": "Equinix-TY2-2",
                 "pairingKey": "4f043662-2ed6-45b0-8c3a-77d685716e28/asia-northeast1/2"
             },
             "qosType": "guarantee"
@@ -136,14 +138,14 @@ const createRequest = `
             },
             "primary": {
                 "asPathPrepend": {
-                    "in": 1,
+                    "in": null,
                     "out": null
                 }
             }
         },
         "destination": {
             "primary": {
-                "interconnect": "Equinix-TY2-1",
+                "interconnect": "Equinix-TY2-2",
                 "pairingKey": "4f043662-2ed6-45b0-8c3a-77d685716e28/asia-northeast1/2"
             },
             "qosType": "guarantee"
@@ -157,10 +159,11 @@ var createResponse = fmt.Sprintf(`
 {
     "connection": {
         "id": "%s",
-        "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
-        "operationStatus": "Processing",
-        "redundant": false,
         "name": "YourConnectionName",
+        "redundant": false,
+        "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
+        "area": "JPEAST",
+        "operationStatus": "Processing",
         "bandwidth": "300M",
         "source": {
             "routerId": "F020123456789",
@@ -171,14 +174,14 @@ var createResponse = fmt.Sprintf(`
             },
             "primary": {
                 "asPathPrepend": {
-                    "in": 1,
+                    "in": null,
                     "out": null
                 }
             }
         },
         "destination": {
             "primary": {
-                "interconnect": "Equinix-TY2-1",
+                "interconnect": "Equinix-TY2-2",
                 "pairingKey": "4f043662-2ed6-45b0-8c3a-77d685716e28/asia-northeast1/2"
             },
             "qosType": "guarantee"
@@ -193,6 +196,7 @@ var createResponse = fmt.Sprintf(`
 var connectionCreated = con.Connection{
 	ID:              idConnection1,
 	TenantID:        "87e89b8f075a4ee1aa209f6ca6ce242c",
+	Area:            "JPEAST",
 	OperationStatus: "Processing",
 	Redundant:       false,
 	Name:            "YourConnectionName",
@@ -206,14 +210,14 @@ var connectionCreated = con.Connection{
 		},
 		Primary: con.Primary{
 			ASPathPrepend: con.ASPathPrepend{
-				In:  &one,
+				In:  &null,
 				Out: &null,
 			},
 		},
 	},
 	Destination: con.Destination{
 		Primary: con.DestinationHAInfo{
-			Interconnect: "Equinix-TY2-1",
+			Interconnect: "Equinix-TY2-2",
 			PairingKey:   "4f043662-2ed6-45b0-8c3a-77d685716e28/asia-northeast1/2",
 		},
 		QosType: "guarantee",
@@ -232,10 +236,11 @@ const updateRequest = `
             "primary": {
                 "asPathPrepend": {
                     "in": 1,
-                    "out": 2
+                    "out": 1
                 }
             }
-        }
+        },
+        "bandwidth": "200M"
     }
 }
 `
@@ -244,11 +249,12 @@ var updateResponse = fmt.Sprintf(`
 {
     "connection": {
         "id": "%s",
-        "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
-        "operationStatus": "Processing",
-        "redundant": false,
         "name": "YourConnectionName",
-        "bandwidth": "300M",
+        "redundant": false,
+        "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
+        "area": "JPEAST",
+        "operationStatus": "Processing",
+        "bandwidth": "200M",
         "source": {
             "routerId": "F020123456789",
             "groupName": "group_1",
@@ -259,13 +265,13 @@ var updateResponse = fmt.Sprintf(`
             "primary": {
                 "asPathPrepend": {
                     "in": 1,
-                    "out": 2
+                    "out": 1
                 }
             }
         },
         "destination": {
             "primary": {
-                "interconnect": "Equinix-TY2-1",
+                "interconnect": "Equinix-TY2-2",
                 "pairingKey": "4f043662-2ed6-45b0-8c3a-77d685716e28/asia-northeast1/2"
             },
             "qosType": "guarantee"
@@ -281,10 +287,11 @@ var updateResponse = fmt.Sprintf(`
 var connectionUpdated = con.Connection{
 	ID:              idConnection1,
 	TenantID:        "87e89b8f075a4ee1aa209f6ca6ce242c",
+	Area:            "JPEAST",
 	OperationStatus: "Processing",
 	Redundant:       false,
 	Name:            "YourConnectionName",
-	Bandwidth:       "300M",
+	Bandwidth:       "200M",
 	Source: con.Source{
 		RouterID:  "F020123456789",
 		GroupName: "group_1",
@@ -295,13 +302,13 @@ var connectionUpdated = con.Connection{
 		Primary: con.Primary{
 			ASPathPrepend: con.ASPathPrepend{
 				In:  &one,
-				Out: &two,
+				Out: &one,
 			},
 		},
 	},
 	Destination: con.Destination{
 		Primary: con.DestinationHAInfo{
-			Interconnect: "Equinix-TY2-1",
+			Interconnect: "Equinix-TY2-2",
 			PairingKey:   "4f043662-2ed6-45b0-8c3a-77d685716e28/asia-northeast1/2",
 		},
 		QosType: "guarantee",
