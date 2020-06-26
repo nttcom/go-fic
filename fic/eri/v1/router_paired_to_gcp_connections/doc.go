@@ -45,6 +45,16 @@ Example to Create a Connection
 				In:  "noRoute",
 				Out: "privateRoute",
 			},
+            Primary: con.SourceHAInfo{
+				MED: &con.MED{
+					Out: 10,
+				},
+			},
+			Secondary: con.SourceHAInfo{
+				MED: &con.MED{
+					Out: 20,
+				},
+			},
 		},
 		Destination: con.Destination{
 			Primary: con.DestinationHAInfo{
@@ -82,7 +92,18 @@ Example to Update a Connection
 				In:  "fullRoute",
 				Out: "fullRoute",
 			},
+            Primary: con.SourceHAInfo{
+				MED: &con.MED{
+					Out: 30,
+				},
+			},
+			Secondary: con.SourceHAInfo{
+				MED: &con.MED{
+					Out: 40,
+				},
+			},
 		},
+		Bandwidth: "200M",
 	}
 	connectionID := "484cda0e-106f-4f4b-bb3f-d413710bbe78"
 	c, err := con.Update(fakeclient.ServiceClient(), connectionID, updateOpts).Extract()

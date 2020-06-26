@@ -66,6 +66,17 @@ type RouteFilter struct {
 	Out string `json:"out" required:"true"`
 }
 
+// MED represents MED value
+type MED struct {
+	Out int `json:"out"`
+}
+
+// SourceHAInfo represents Primary/Secondary parameters
+// for Source of Connection.
+type SourceHAInfo struct {
+	MED *MED `json:"med" required:"true"`
+}
+
 type DestinationHAInfo struct {
 	Interconnect string `json:"interconnect" required:"true"`
 	PairingKey   string `json:"pairingKey" required:"true"`
@@ -81,9 +92,11 @@ type Destination struct {
 
 // Source represents source parameter for connection.
 type Source struct {
-	RouterID    string      `json:"routerId" required:"true"`
-	GroupName   string      `json:"groupName" required:"true"`
-	RouteFilter RouteFilter `json:"routeFilter" required:"true"`
+	RouterID    string       `json:"routerId" required:"true"`
+	GroupName   string       `json:"groupName" required:"true"`
+	RouteFilter RouteFilter  `json:"routeFilter" required:"true"`
+	Primary     SourceHAInfo `json:"primary" required:"true"`
+	Secondary   SourceHAInfo `json:"secondary" required:"true"`
 }
 
 // CreateOpts represents options used to create a connection.
@@ -91,7 +104,7 @@ type CreateOpts struct {
 	Name        string      `json:"name" required:"true"`
 	Source      Source      `json:"source"`
 	Destination Destination `json:"destination"`
-	Bandwidth   string      `json:"bandwidth"`
+	Bandwidth   string      `json:"bandwidth" required:"true"`
 	// PrimaryConnectedNetworkAddress   string      `json:"primaryConnectedNwAddress"`
 	// SecondaryConnectedNetworkAddress string      `json:"secondaryConnectedNwAddress"`
 }
@@ -131,12 +144,15 @@ type UpdateOptsBuilder interface {
 
 // SourceForUpdate represents Source parameter in case of Updating.
 type SourceForUpdate struct {
-	RouteFilter RouteFilter `json:"routeFilter" required:"true"`
+	RouteFilter RouteFilter  `json:"routeFilter" required:"true"`
+	Primary     SourceHAInfo `json:"primary" required:"true"`
+	Secondary   SourceHAInfo `json:"secondary" required:"true"`
 }
 
 // UpdateOpts represents options used to update a connection.
 type UpdateOpts struct {
-	Source SourceForUpdate `json:"source"`
+	Source    SourceForUpdate `json:"source"`
+	Bandwidth string          `json:"bandwidth" required:"true"`
 }
 
 // ToUpdateMap builds a request body from UpdateOpts.
