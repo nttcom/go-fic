@@ -92,9 +92,9 @@ type Source struct {
 // CreateOpts represents options used to create a connection.
 type CreateOpts struct {
 	Name        string      `json:"name" required:"true"`
-	Source      Source      `json:"source"`
-	Destination Destination `json:"destination"`
-	Bandwidth   string      `json:"bandwidth"`
+	Source      Source      `json:"source" required:"true"`
+	Destination Destination `json:"destination" required:"true"`
+	Bandwidth   string      `json:"bandwidth" required:"true"`
 }
 
 // ToConnectionCreateMap builds a request body from CreateOpts.
@@ -138,7 +138,7 @@ type SourceForUpdate struct {
 
 // UpdateOpts represents options used to update a connection.
 type UpdateOpts struct {
-	Source    SourceForUpdate `json:"source"`
+	Source    SourceForUpdate `json:"source" required:"true"`
 	Bandwidth string          `json:"bandwidth" required:"true"`
 }
 

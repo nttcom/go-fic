@@ -68,7 +68,7 @@ type RouteFilter struct {
 
 // MED represents MED value
 type MED struct {
-	Out int `json:"out"`
+	Out int `json:"out" required:"true"`
 }
 
 // SourceHAInfo represents Primary/Secondary parameters
@@ -87,7 +87,7 @@ type Destination struct {
 	// AWSAccountID string            `json:"awsAccountId" required:"true"`
 	QosType   string            `json:"qosType" required:"true"`
 	Primary   DestinationHAInfo `json:"primary" required:"true"`
-	Secondary DestinationHAInfo `json:"secondary,omitempty"`
+	Secondary DestinationHAInfo `json:"secondary" required:"true"`
 }
 
 // Source represents source parameter for connection.
@@ -102,8 +102,8 @@ type Source struct {
 // CreateOpts represents options used to create a connection.
 type CreateOpts struct {
 	Name        string      `json:"name" required:"true"`
-	Source      Source      `json:"source"`
-	Destination Destination `json:"destination"`
+	Source      Source      `json:"source" required:"true"`
+	Destination Destination `json:"destination" required:"true"`
 	Bandwidth   string      `json:"bandwidth" required:"true"`
 	// PrimaryConnectedNetworkAddress   string      `json:"primaryConnectedNwAddress"`
 	// SecondaryConnectedNetworkAddress string      `json:"secondaryConnectedNwAddress"`
@@ -151,7 +151,7 @@ type SourceForUpdate struct {
 
 // UpdateOpts represents options used to update a connection.
 type UpdateOpts struct {
-	Source    SourceForUpdate `json:"source"`
+	Source    SourceForUpdate `json:"source" required:"true"`
 	Bandwidth string          `json:"bandwidth" required:"true"`
 }
 
