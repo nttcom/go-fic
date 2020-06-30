@@ -46,12 +46,12 @@ Example to Create a Connection
 				Out: "privateRoute",
 			},
 			Primary: con.SourceHAInfo{
-				MED: &con.MED{
+				MED: con.MED{
 					Out: 10,
 				},
 			},
 			Secondary: con.SourceHAInfo{
-				MED: &con.MED{
+				MED: con.MED{
 					Out: 20,
 				},
 			},
@@ -93,12 +93,12 @@ Example to Update a Connection
 				Out: "fullRoute",
 			},
 			Primary: con.SourceHAInfo{
-				MED: &con.MED{
+				MED: con.MED{
 					Out: 30,
 				},
 			},
 			Secondary: con.SourceHAInfo{
-				MED: &con.MED{
+				MED: con.MED{
 					Out: 40,
 				},
 			},

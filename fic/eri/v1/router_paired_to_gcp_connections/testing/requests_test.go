@@ -118,12 +118,12 @@ func TestCreateConnection(t *testing.T) {
 				Out: "privateRoute",
 			},
 			Primary: con.SourceHAInfo{
-				MED: &con.MED{
+				MED: con.MED{
 					Out: 10,
 				},
 			},
 			Secondary: con.SourceHAInfo{
-				MED: &con.MED{
+				MED: con.MED{
 					Out: 20,
 				},
 			},
@@ -188,12 +188,12 @@ func TestUpdateConnection(t *testing.T) {
 				Out: "fullRoute",
 			},
 			Primary: con.SourceHAInfo{
-				MED: &con.MED{
+				MED: con.MED{
 					Out: 30,
 				},
 			},
 			Secondary: con.SourceHAInfo{
-				MED: &con.MED{
+				MED: con.MED{
 					Out: 40,
 				},
 			},

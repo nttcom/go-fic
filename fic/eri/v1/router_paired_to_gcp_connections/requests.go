@@ -74,7 +74,7 @@ type MED struct {
 // SourceHAInfo represents Primary/Secondary parameters
 // for Source of Connection.
 type SourceHAInfo struct {
-	MED *MED `json:"med" required:"true"`
+	MED MED `json:"med" required:"true"`
 }
 
 type DestinationHAInfo struct {
@@ -84,7 +84,6 @@ type DestinationHAInfo struct {
 
 // Destination represents destination parameter for connection.
 type Destination struct {
-	// AWSAccountID string            `json:"awsAccountId" required:"true"`
 	QosType   string            `json:"qosType" required:"true"`
 	Primary   DestinationHAInfo `json:"primary" required:"true"`
 	Secondary DestinationHAInfo `json:"secondary" required:"true"`
@@ -105,8 +104,6 @@ type CreateOpts struct {
 	Source      Source      `json:"source" required:"true"`
 	Destination Destination `json:"destination" required:"true"`
 	Bandwidth   string      `json:"bandwidth" required:"true"`
-	// PrimaryConnectedNetworkAddress   string      `json:"primaryConnectedNwAddress"`
-	// SecondaryConnectedNetworkAddress string      `json:"secondaryConnectedNwAddress"`
 }
 
 // ToConnectionCreateMap builds a request body from CreateOpts.
