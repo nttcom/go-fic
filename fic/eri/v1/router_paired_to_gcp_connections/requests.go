@@ -66,6 +66,17 @@ type RouteFilter struct {
 	Out string `json:"out" required:"true"`
 }
 
+// MED represents MED value
+type MED struct {
+	Out int `json:"out" required:"true"`
+}
+
+// SourceHAInfo represents Primary/Secondary parameters
+// for Source of Connection.
+type SourceHAInfo struct {
+	MED MED `json:"med" required:"true"`
+}
+
 type DestinationHAInfo struct {
 	Interconnect string `json:"interconnect" required:"true"`
 	PairingKey   string `json:"pairingKey" required:"true"`
@@ -73,27 +84,26 @@ type DestinationHAInfo struct {
 
 // Destination represents destination parameter for connection.
 type Destination struct {
-	// AWSAccountID string            `json:"awsAccountId" required:"true"`
 	QosType   string            `json:"qosType" required:"true"`
 	Primary   DestinationHAInfo `json:"primary" required:"true"`
-	Secondary DestinationHAInfo `json:"secondary,omitempty"`
+	Secondary DestinationHAInfo `json:"secondary" required:"true"`
 }
 
 // Source represents source parameter for connection.
 type Source struct {
-	RouterID    string      `json:"routerId" required:"true"`
-	GroupName   string      `json:"groupName" required:"true"`
-	RouteFilter RouteFilter `json:"routeFilter" required:"true"`
+	RouterID    string       `json:"routerId" required:"true"`
+	GroupName   string       `json:"groupName" required:"true"`
+	RouteFilter RouteFilter  `json:"routeFilter" required:"true"`
+	Primary     SourceHAInfo `json:"primary" required:"true"`
+	Secondary   SourceHAInfo `json:"secondary" required:"true"`
 }
 
 // CreateOpts represents options used to create a connection.
 type CreateOpts struct {
 	Name        string      `json:"name" required:"true"`
-	Source      Source      `json:"source"`
-	Destination Destination `json:"destination"`
-	Bandwidth   string      `json:"bandwidth"`
-	// PrimaryConnectedNetworkAddress   string      `json:"primaryConnectedNwAddress"`
-	// SecondaryConnectedNetworkAddress string      `json:"secondaryConnectedNwAddress"`
+	Source      Source      `json:"source" required:"true"`
+	Destination Destination `json:"destination" required:"true"`
+	Bandwidth   string      `json:"bandwidth" required:"true"`
 }
 
 // ToConnectionCreateMap builds a request body from CreateOpts.
@@ -131,12 +141,15 @@ type UpdateOptsBuilder interface {
 
 // SourceForUpdate represents Source parameter in case of Updating.
 type SourceForUpdate struct {
-	RouteFilter RouteFilter `json:"routeFilter" required:"true"`
+	RouteFilter RouteFilter  `json:"routeFilter" required:"true"`
+	Primary     SourceHAInfo `json:"primary" required:"true"`
+	Secondary   SourceHAInfo `json:"secondary" required:"true"`
 }
 
 // UpdateOpts represents options used to update a connection.
 type UpdateOpts struct {
-	Source SourceForUpdate `json:"source"`
+	Source    SourceForUpdate `json:"source" required:"true"`
+	Bandwidth string          `json:"bandwidth" required:"true"`
 }
 
 // ToUpdateMap builds a request body from UpdateOpts.

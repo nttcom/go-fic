@@ -49,6 +49,7 @@ type UpdateResult struct {
 type Connection struct {
 	ID                             string      `json:"id"`
 	TenantID                       string      `json:"tenantId"`
+	Area                           string      `json:"area"`
 	OperationStatus                string      `json:"operationStatus"`
 	Redundant                      bool        `json:"redundant"`
 	Name                           string      `json:"name"`

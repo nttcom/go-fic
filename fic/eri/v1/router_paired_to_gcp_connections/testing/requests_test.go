@@ -117,14 +117,24 @@ func TestCreateConnection(t *testing.T) {
 				In:  "noRoute",
 				Out: "privateRoute",
 			},
+			Primary: con.SourceHAInfo{
+				MED: con.MED{
+					Out: 10,
+				},
+			},
+			Secondary: con.SourceHAInfo{
+				MED: con.MED{
+					Out: 20,
+				},
+			},
 		},
 		Destination: con.Destination{
 			Primary: con.DestinationHAInfo{
-				Interconnect: "@Tokyo-CC2-1",
+				Interconnect: "@Tokyo-CC2-2",
 				PairingKey:   "d27476e6-e8a8-4214-a88f-9d3131db465d/asia-northeast1/2",
 			},
 			Secondary: con.DestinationHAInfo{
-				Interconnect: "@Tokyo-CC2-1",
+				Interconnect: "@Tokyo-CC2-2",
 				PairingKey:   "17c64c4e-f845-4450-82e9-843095e18526/asia-northeast1/2",
 			},
 			QosType: "guarantee",
@@ -177,7 +187,18 @@ func TestUpdateConnection(t *testing.T) {
 				In:  "fullRoute",
 				Out: "fullRoute",
 			},
+			Primary: con.SourceHAInfo{
+				MED: con.MED{
+					Out: 30,
+				},
+			},
+			Secondary: con.SourceHAInfo{
+				MED: con.MED{
+					Out: 40,
+				},
+			},
 		},
+		Bandwidth: "200M",
 	}
 	c, err := con.Update(fakeclient.ServiceClient(), idConnection1, updateOpts).Extract()
 	th.AssertNoErr(t, err)

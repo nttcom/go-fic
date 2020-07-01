@@ -125,14 +125,14 @@ func TestCreateConnection(t *testing.T) {
 			},
 			Primary: con.Primary{
 				ASPathPrepend: con.ASPathPrepend{
-					In:  &one,
+					In:  &null,
 					Out: &null,
 				},
 			},
 		},
 		Destination: con.Destination{
 			Primary: con.DestinationHAInfo{
-				Interconnect: "Equinix-TY2-1",
+				Interconnect: "Equinix-TY2-2",
 				PairingKey:   "4f043662-2ed6-45b0-8c3a-77d685716e28/asia-northeast1/2",
 			},
 			QosType: "guarantee",
@@ -191,10 +191,11 @@ func TestUpdateConnection(t *testing.T) {
 			Primary: con.Primary{
 				ASPathPrepend: con.ASPathPrepend{
 					In:  &one,
-					Out: &two,
+					Out: &one,
 				},
 			},
 		},
+		Bandwidth: "200M",
 	}
 	c, err := con.Update(fakeclient.ServiceClient(), idConnection1, updateOpts).Extract()
 	th.AssertNoErr(t, err)

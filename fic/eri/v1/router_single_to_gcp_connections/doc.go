@@ -93,6 +93,7 @@ Example to Update a Connection
 				},
 			},
 		},
+		Bandwidth: "200M",
 	}
 	connectionID := "484cda0e-106f-4f4b-bb3f-d413710bbe78"
 	c, err := con.Update(fakeclient.ServiceClient(), connectionID, updateOpts).Extract()

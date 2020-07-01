@@ -13,10 +13,11 @@ var listResponse = fmt.Sprintf(`
     "connections": [
         {
             "id": "%s",
-            "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
-            "operationStatus": "Completed",
-            "redundant": true,
             "name": "YourConnectionName",
+            "redundant": true,
+            "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
+            "area": "JPEAST",
+            "operationStatus": "Completed",
             "bandwidth": "100M",
             "source": {
                 "routerId": "F020123456789",
@@ -24,16 +25,26 @@ var listResponse = fmt.Sprintf(`
                 "routeFilter": {
                     "in": "noRoute",
                     "out": "privateRoute"
+                },
+                "primary": {
+                    "med": {
+                        "out": 10
+                    }
+                },
+                "secondary": {
+                    "med": {
+                        "out": 20
+                    }
                 }
             },
             "destination": {
                 "primary": {
-                    "interconnect": "@Tokyo-CC2-1",
+                    "interconnect": "@Tokyo-CC2-2",
                     "pairingKey": "d27476e6-e8a8-4214-a88f-9d3131db465d/asia-northeast1/2"
                 },
                 "qosType": "guarantee",
                 "secondary": {
-                    "interconnect": "@Tokyo-CC2-1",
+                    "interconnect": "@Tokyo-CC2-2",
                     "pairingKey": "17c64c4e-f845-4450-82e9-843095e18526/asia-northeast1/2"
                 }
             },
@@ -48,6 +59,7 @@ var listResponse = fmt.Sprintf(`
 var connection1 = con.Connection{
 	ID:              idConnection1,
 	TenantID:        "87e89b8f075a4ee1aa209f6ca6ce242c",
+	Area:            "JPEAST",
 	OperationStatus: "Completed",
 	Redundant:       true,
 	Name:            "YourConnectionName",
@@ -59,15 +71,25 @@ var connection1 = con.Connection{
 			In:  "noRoute",
 			Out: "privateRoute",
 		},
+		Primary: con.SourceHAInfo{
+			MED: con.MED{
+				Out: 10,
+			},
+		},
+		Secondary: con.SourceHAInfo{
+			MED: con.MED{
+				Out: 20,
+			},
+		},
 	},
 	Destination: con.Destination{
 		Primary: con.DestinationHAInfo{
-			Interconnect: "@Tokyo-CC2-1",
+			Interconnect: "@Tokyo-CC2-2",
 			PairingKey:   "d27476e6-e8a8-4214-a88f-9d3131db465d/asia-northeast1/2",
 		},
 		QosType: "guarantee",
 		Secondary: con.DestinationHAInfo{
-			Interconnect: "@Tokyo-CC2-1",
+			Interconnect: "@Tokyo-CC2-2",
 			PairingKey:   "17c64c4e-f845-4450-82e9-843095e18526/asia-northeast1/2",
 		},
 	},
@@ -83,10 +105,11 @@ var getResponse = fmt.Sprintf(`
 {
     "connection": {
         "id": "%s",
-        "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
-        "operationStatus": "Completed",
-        "redundant": true,
         "name": "YourConnectionName",
+        "redundant": true,
+        "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
+        "area": "JPEAST",
+        "operationStatus": "Completed",
         "bandwidth": "100M",
         "source": {
             "routerId": "F020123456789",
@@ -94,16 +117,26 @@ var getResponse = fmt.Sprintf(`
             "routeFilter": {
                 "in": "noRoute",
                 "out": "privateRoute"
+            },
+            "primary": {
+                "med": {
+                    "out": 10
+                }
+            },
+            "secondary": {
+                "med": {
+                    "out": 20
+                }
             }
         },
         "destination": {
             "primary": {
-                "interconnect": "@Tokyo-CC2-1",
+                "interconnect": "@Tokyo-CC2-2",
                 "pairingKey": "d27476e6-e8a8-4214-a88f-9d3131db465d/asia-northeast1/2"
             },
             "qosType": "guarantee",
             "secondary": {
-                "interconnect": "@Tokyo-CC2-1",
+                "interconnect": "@Tokyo-CC2-2",
                 "pairingKey": "17c64c4e-f845-4450-82e9-843095e18526/asia-northeast1/2"
             }
         },
@@ -125,15 +158,25 @@ const createRequest = `
             "routeFilter": {
                 "in": "noRoute",
                 "out": "privateRoute"
+            },
+            "primary": {
+                "med": {
+                    "out": 10
+                }
+            },
+            "secondary": {
+                "med": {
+                    "out": 20
+                }
             }
         },
         "destination": {
             "primary": {
-                "interconnect": "@Tokyo-CC2-1",
+                "interconnect": "@Tokyo-CC2-2",
                 "pairingKey": "d27476e6-e8a8-4214-a88f-9d3131db465d/asia-northeast1/2"
             },
             "secondary": {
-                "interconnect": "@Tokyo-CC2-1",
+                "interconnect": "@Tokyo-CC2-2",
                 "pairingKey": "17c64c4e-f845-4450-82e9-843095e18526/asia-northeast1/2"
             },
             "qosType": "guarantee"
@@ -146,10 +189,11 @@ var createResponse = fmt.Sprintf(`
 {
     "connection": {
         "id": "%s",
-        "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
-        "operationStatus": "Processing",
-        "redundant": true,
         "name": "YourConnectionName",
+        "redundant": true,
+        "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
+        "area": "JPEAST",
+        "operationStatus": "Processing",
         "bandwidth": "100M",
         "source": {
             "routerId": "F020123456789",
@@ -157,16 +201,26 @@ var createResponse = fmt.Sprintf(`
             "routeFilter": {
                 "in": "noRoute",
                 "out": "privateRoute"
+            },
+            "primary": {
+                "med": {
+                    "out": 10
+                }
+            },
+            "secondary": {
+                "med": {
+                    "out": 20
+                }
             }
         },
         "destination": {
             "primary": {
-                "interconnect": "@Tokyo-CC2-1",
+                "interconnect": "@Tokyo-CC2-2",
                 "pairingKey": "d27476e6-e8a8-4214-a88f-9d3131db465d/asia-northeast1/2"
             },
             "qosType": "guarantee",
             "secondary": {
-                "interconnect": "@Tokyo-CC2-1",
+                "interconnect": "@Tokyo-CC2-2",
                 "pairingKey": "17c64c4e-f845-4450-82e9-843095e18526/asia-northeast1/2"
             }
         },
@@ -180,6 +234,7 @@ var createResponse = fmt.Sprintf(`
 var connectionCreated = con.Connection{
 	ID:              idConnection1,
 	TenantID:        "87e89b8f075a4ee1aa209f6ca6ce242c",
+	Area:            "JPEAST",
 	OperationStatus: "Processing",
 	Redundant:       true,
 	Name:            "YourConnectionName",
@@ -191,15 +246,25 @@ var connectionCreated = con.Connection{
 			In:  "noRoute",
 			Out: "privateRoute",
 		},
+		Primary: con.SourceHAInfo{
+			MED: con.MED{
+				Out: 10,
+			},
+		},
+		Secondary: con.SourceHAInfo{
+			MED: con.MED{
+				Out: 20,
+			},
+		},
 	},
 	Destination: con.Destination{
 		Primary: con.DestinationHAInfo{
-			Interconnect: "@Tokyo-CC2-1",
+			Interconnect: "@Tokyo-CC2-2",
 			PairingKey:   "d27476e6-e8a8-4214-a88f-9d3131db465d/asia-northeast1/2",
 		},
 		QosType: "guarantee",
 		Secondary: con.DestinationHAInfo{
-			Interconnect: "@Tokyo-CC2-1",
+			Interconnect: "@Tokyo-CC2-2",
 			PairingKey:   "17c64c4e-f845-4450-82e9-843095e18526/asia-northeast1/2",
 		},
 	},
@@ -213,8 +278,19 @@ const updateRequest = `
             "routeFilter": {
                 "in": "fullRoute",
                 "out": "fullRoute"
+            },
+            "primary": {
+                "med": {
+                    "out": 30
+                }
+            },
+            "secondary": {
+                "med": {
+                    "out": 40
+                }
             }
-        }
+        },
+        "bandwidth": "200M"
     }
 }`
 
@@ -222,27 +298,38 @@ var updateResponse = fmt.Sprintf(`
 {
     "connection": {
         "id": "%s",
-        "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
-        "operationStatus": "Processing",
-        "redundant": true,
         "name": "YourConnectionName",
-        "bandwidth": "100M",
+        "redundant": true,
+        "tenantId": "87e89b8f075a4ee1aa209f6ca6ce242c",
+        "area": "JPEAST",
+        "operationStatus": "Processing",
+        "bandwidth": "200M",
         "source": {
             "routerId": "F020123456789",
             "groupName": "group_1",
             "routeFilter": {
                 "in": "fullRoute",
                 "out": "fullRoute"
+            },
+            "primary": {
+                "med": {
+                    "out": 30
+                }
+            },
+            "secondary": {
+                "med": {
+                    "out": 40
+                }
             }
         },
         "destination": {
             "primary": {
-                "interconnect": "@Tokyo-CC2-1",
+                "interconnect": "@Tokyo-CC2-2",
                 "pairingKey": "d27476e6-e8a8-4214-a88f-9d3131db465d/asia-northeast1/2"
             },
             "qosType": "guarantee",
             "secondary": {
-                "interconnect": "@Tokyo-CC2-1",
+                "interconnect": "@Tokyo-CC2-2",
                 "pairingKey": "17c64c4e-f845-4450-82e9-843095e18526/asia-northeast1/2"
             }
         },
@@ -258,10 +345,11 @@ var updateResponse = fmt.Sprintf(`
 var connectionUpdated = con.Connection{
 	ID:              idConnection1,
 	TenantID:        "87e89b8f075a4ee1aa209f6ca6ce242c",
+	Area:            "JPEAST",
 	OperationStatus: "Processing",
 	Redundant:       true,
 	Name:            "YourConnectionName",
-	Bandwidth:       "100M",
+	Bandwidth:       "200M",
 	Source: con.Source{
 		RouterID:  "F020123456789",
 		GroupName: "group_1",
@@ -269,15 +357,25 @@ var connectionUpdated = con.Connection{
 			In:  "fullRoute",
 			Out: "fullRoute",
 		},
+		Primary: con.SourceHAInfo{
+			MED: con.MED{
+				Out: 30,
+			},
+		},
+		Secondary: con.SourceHAInfo{
+			MED: con.MED{
+				Out: 40,
+			},
+		},
 	},
 	Destination: con.Destination{
 		Primary: con.DestinationHAInfo{
-			Interconnect: "@Tokyo-CC2-1",
+			Interconnect: "@Tokyo-CC2-2",
 			PairingKey:   "d27476e6-e8a8-4214-a88f-9d3131db465d/asia-northeast1/2",
 		},
 		QosType: "guarantee",
 		Secondary: con.DestinationHAInfo{
-			Interconnect: "@Tokyo-CC2-1",
+			Interconnect: "@Tokyo-CC2-2",
 			PairingKey:   "17c64c4e-f845-4450-82e9-843095e18526/asia-northeast1/2",
 		},
 	},
