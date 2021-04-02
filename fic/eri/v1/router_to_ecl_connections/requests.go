@@ -132,7 +132,9 @@ type SourceForUpdate struct {
 
 // UpdateOpts represents options used to update a connection.
 type UpdateOpts struct {
-	Source SourceForUpdate `json:"source"`
+	Name      string           `json:"name,omitempty"`
+	Source    *SourceForUpdate `json:"source,omitempty"`
+	Bandwidth string           `json:"bandwidth,omitempty"`
 }
 
 // ToUpdateMap builds a request body from UpdateOpts.
