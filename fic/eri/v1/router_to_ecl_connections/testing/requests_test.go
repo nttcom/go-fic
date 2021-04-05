@@ -7,13 +7,12 @@ import (
 
 	con "github.com/nttcom/go-fic/fic/eri/v1/router_to_ecl_connections"
 	"github.com/nttcom/go-fic/pagination"
-	"github.com/nttcom/go-fic/testhelper/client"
 
 	th "github.com/nttcom/go-fic/testhelper"
 	fakeclient "github.com/nttcom/go-fic/testhelper/client"
 )
 
-const TokenID = client.TokenID
+const TokenID = fakeclient.TokenID
 
 func TestListConnections(t *testing.T) {
 	th.SetupHTTP()
@@ -152,7 +151,7 @@ func TestDeleteConnection(t *testing.T) {
 	th.AssertNoErr(t, res.Err)
 }
 
-func TestUpdateConnection(t *testing.T) {
+func TestUpdateConnection_name(t *testing.T) {
 	th.SetupHTTP()
 	defer th.TeardownHTTP()
 
@@ -163,19 +162,73 @@ func TestUpdateConnection(t *testing.T) {
 			th.TestHeader(t, r, "X-Auth-Token", TokenID)
 			th.TestHeader(t, r, "Content-Type", "application/json")
 			th.TestHeader(t, r, "Accept", "application/json")
-			th.TestJSONRequest(t, r, updateRequest)
+			th.TestJSONRequest(t, r, updateNameRequest)
 			w.Header().Add("Content-Type", "application/json")
 			w.WriteHeader(http.StatusAccepted)
 			fmt.Fprintf(w, updateResponse)
 		})
 
 	updateOpts := con.UpdateOpts{
-		Source: con.SourceForUpdate{
+		Name: "YourConnectionName",
+	}
+	c, err := con.Update(fakeclient.ServiceClient(), idConnection1, updateOpts).Extract()
+	th.AssertNoErr(t, err)
+
+	th.AssertEquals(t, c.OperationStatus, "Processing")
+	th.AssertDeepEquals(t, &connectionUpdated, c)
+}
+
+func TestUpdateConnection_source(t *testing.T) {
+	th.SetupHTTP()
+	defer th.TeardownHTTP()
+
+	url := fmt.Sprintf("/router-to-ecl-connections/%s", idConnection1)
+	th.Mux.HandleFunc(url,
+		func(w http.ResponseWriter, r *http.Request) {
+			th.TestMethod(t, r, "PATCH")
+			th.TestHeader(t, r, "X-Auth-Token", TokenID)
+			th.TestHeader(t, r, "Content-Type", "application/json")
+			th.TestHeader(t, r, "Accept", "application/json")
+			th.TestJSONRequest(t, r, updateSourceRequest)
+			w.Header().Add("Content-Type", "application/json")
+			w.WriteHeader(http.StatusAccepted)
+			fmt.Fprintf(w, updateResponse)
+		})
+
+	updateOpts := con.UpdateOpts{
+		Source: &con.SourceForUpdate{
 			RouteFilter: con.RouteFilter{
 				In:  "fullRoute",
 				Out: "fullRouteWithDefaultRoute",
 			},
 		},
+	}
+	c, err := con.Update(fakeclient.ServiceClient(), idConnection1, updateOpts).Extract()
+	th.AssertNoErr(t, err)
+
+	th.AssertEquals(t, c.OperationStatus, "Processing")
+	th.AssertDeepEquals(t, &connectionUpdated, c)
+}
+
+func TestUpdateConnection_bandwidth(t *testing.T) {
+	th.SetupHTTP()
+	defer th.TeardownHTTP()
+
+	url := fmt.Sprintf("/router-to-ecl-connections/%s", idConnection1)
+	th.Mux.HandleFunc(url,
+		func(w http.ResponseWriter, r *http.Request) {
+			th.TestMethod(t, r, "PATCH")
+			th.TestHeader(t, r, "X-Auth-Token", TokenID)
+			th.TestHeader(t, r, "Content-Type", "application/json")
+			th.TestHeader(t, r, "Accept", "application/json")
+			th.TestJSONRequest(t, r, updateBandwidthRequest)
+			w.Header().Add("Content-Type", "application/json")
+			w.WriteHeader(http.StatusAccepted)
+			fmt.Fprintf(w, updateResponse)
+		})
+
+	updateOpts := con.UpdateOpts{
+		Bandwidth: "100M",
 	}
 	c, err := con.Update(fakeclient.ServiceClient(), idConnection1, updateOpts).Extract()
 	th.AssertNoErr(t, err)

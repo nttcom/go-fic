@@ -75,7 +75,7 @@ Example to Delete a Connection
 Example to Update a Connection
 
 	updateOpts := con.UpdateOpts{
-		Source: con.SourceForUpdate{
+		Source: &con.SourceForUpdate{
 			con.RouteFilter{
 				In:  "fullRoute",
 				Out: "fullRouteWithDefaultRoute",

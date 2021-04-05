@@ -184,7 +184,14 @@ var connectionCreated = con.Connection{
 	OperationID:                      "d981d661a4be48bca8b748a84b0325c4",
 }
 
-const updateRequest = `
+const updateNameRequest = `
+{
+    "connection": {
+        "name": "YourConnectionName"
+    }
+}`
+
+const updateSourceRequest = `
 {
     "connection": {
         "source": {
@@ -193,6 +200,13 @@ const updateRequest = `
                 "out": "fullRouteWithDefaultRoute"
             }
         }
+    }
+}`
+
+const updateBandwidthRequest = `
+{
+    "connection": {
+        "bandwidth": "100M"
     }
 }`
 
