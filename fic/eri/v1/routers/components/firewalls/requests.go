@@ -141,10 +141,10 @@ type RoutingGroupSetting struct {
 
 // UpdateOpts represents options used to activate a firewall.
 type UpdateOpts struct {
-	Rules                []Rule                `json:"rules,omitempty"`
-	CustomApplications   []CustomApplication   `json:"customApplications,omitempty"`
-	ApplicationSets      []ApplicationSet      `json:"applicationSets,omitempty"`
-	RoutingGroupSettings []RoutingGroupSetting `json:"routingGroupSettings,omitempty"`
+	Rules                []Rule                `json:"rules"`
+	CustomApplications   []CustomApplication   `json:"customApplications"`
+	ApplicationSets      []ApplicationSet      `json:"applicationSets"`
+	RoutingGroupSettings []RoutingGroupSetting `json:"routingGroupSettings"`
 }
 
 // ToUpdateMap builds a request body from UpdateOpts.
